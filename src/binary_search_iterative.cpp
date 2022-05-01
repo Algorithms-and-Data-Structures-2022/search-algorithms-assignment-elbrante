@@ -12,7 +12,20 @@ namespace assignment {
     //    1) Целевой элемент равен элементу посередине.
     //    2) Целевой элемент меньше элемента посередине (область поиска сокращается).
     //    3) Целевой элемент больше элемента посередине (область поиска сокращается).
-
+    int left = 0;
+    int right = static_cast<int>(data.size()) - 1;
+    while (left <= right) {
+      int middle = (left + right) / 2;
+      if (data[middle] == search_element) {
+        return middle;
+      }
+      if (data[middle] < search_element) {
+        left = middle + 1;
+      }
+      else if (data[middle] > search_element) {
+        right = middle - 1;
+      }
+    }
     return std::nullopt;
   }
 
